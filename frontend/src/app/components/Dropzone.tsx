@@ -101,7 +101,7 @@ export default function DropZone() {
                             onDrop={(e) => handleDrop(e)}
                         >{inDropZone ? (<h3 className="dropzoneText" >
                             DROP HERE
-                        </h3>) : (!fileList && (<h3 className="dropzoneText" >
+                        </h3>) : (!fileLoading && (<h3 className="dropzoneText" >
                             DRAG FILE
                         </h3>))}
                             {fileLoading && (<h3 className="dropzoneText" >FILE DROPPED</h3>)}

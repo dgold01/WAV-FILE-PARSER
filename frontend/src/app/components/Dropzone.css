@@ -5,7 +5,8 @@
   display: flex;
   align-self: center;
   justify-content: center;
-  padding-top: -10px;
+  margin-bottom: 8px;
+
 }
 .dropzoneDROPHERE{
   width: 95%;
@@ -27,17 +28,17 @@
 .fileContainer {
   border-width: 2px;
   border-style: solid;
-  border-color: #222633;
+  border-color: #363946;
   z-index: 1000;
   height: 500px;
-  background-color: #363946;
+  background-color: #222633;
   display: flex;
   flex-direction: column;
 }
 .container{
   width: 600px;
   align-self: center;
-  height: 500px;
+  height: 600px;
   display: flex;
   flex-direction: column;
 }
@@ -48,8 +49,6 @@
   border-width: 2px;
   border-style: solid;
   border-color: #363946;
-  z-index: 1000;
-  height: 500px;
   background-color: #222633 ;
   display: flex;
   flex-direction: column;
@@ -62,7 +61,6 @@ th, td {
 table{
   width: 100%;
   border-spacing: 5px;;
-
 }
 th {
   text-align: left;
@@ -85,18 +83,20 @@ td {
 }
 
 .header {
+  font-size: 20px;
+  font-weight: normal;
+  color: #FFFFFF;
   padding: -10px;
   z-index: 1000;
   margin-left: 10px;;
-  font-size: 15px;
-  font-weight: normal;
-  color: #FFFFFF;
+  margin-top: 3px;
+  margin-bottom: 3px;
   font: TT Norms Pro, sans-serif;
 }
 .tableTitle{
   margin-bottom: 10px;
-  margin:0;
-  margin-left: 10px;;
+  margin-top:0;
+  margin-left: 5px;;
   font-size: 20px;
   font-weight: normal;
   color: #FFFFFF;
