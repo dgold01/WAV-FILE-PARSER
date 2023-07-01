@@ -150,7 +150,7 @@ export default function DropZone() {
                                         </tr>
                                         <tr>
                                             <td>BYTE RATE</td>
-                                            <td>{newByteRate}</td>
+                                            <td>BYTE {newByteRate}</td>
                                         </tr>
 
                                         <tr>
