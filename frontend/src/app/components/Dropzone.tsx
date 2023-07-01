@@ -3,8 +3,8 @@
 import '../components/Dropzone.css'
 import { useEffect, useState } from "react";
 import { extractWavInfo } from '../../fileAnalysis/fileAnalysis'
-import { promiseHooks } from 'v8';
-import { isNull } from 'util';
+
+
 
 export default function DropZone() {
     const [inDropZone, setInDropZone] = useState(false);
@@ -16,11 +16,14 @@ export default function DropZone() {
     const [newChunkSize, setNewChunkSize] = useState(null)
     const [newBitsPerSample, setNewBitsPerSample] = useState(null)
     const [newBlockAlign, setNewBlockAlign] = useState(null)
-    const [newAudioFormat,setNewAudioFormat] = useState(null)
+    const [newAudioFormat, setNewAudioFormat] = useState(null)
     const [newSubChunkIDString, setNewSubChunkIDString] = useState('')
     const [newFormatString, setNewFormatString] = useState('')
     const [newChunkIDString, setNewChunkIDString] = useState('')
+   
+
     useEffect(() => {
+
         async function getFileInfo() {
             console.log('test')
             try {
@@ -30,14 +33,14 @@ export default function DropZone() {
                     console.log(fileList)
                     const file = fileList[0]
                     console.log(file)
-                    const { sampleRate, channels, byteRate, chunkSize, audioFormat, bitsPerSample, blockAlign, subChunkID, chunkID,format } = await extractWavInfo(file)
-                    if(chunkID===1380533830){
+                    const { sampleRate, channels, byteRate, chunkSize, audioFormat, bitsPerSample, blockAlign, subChunkID, chunkID, format } = await extractWavInfo(file)
+                    if (chunkID === 1380533830) {
                         setNewChunkIDString('RIFF')
                     }
-                    if(format=== 0x57415645){
+                    if (format === 0x57415645) {
                         setNewFormatString('WAVE')
                     }
-                    if(subChunkID=== 0x666d7420){
+                    if (subChunkID === 0x666d7420) {
                         setNewSubChunkIDString('FMT')
                     }
                     console.log(chunkID.toString(16))
@@ -60,16 +63,7 @@ export default function DropZone() {
     }, [fileList])
 
 
-    
-
-    function convertChunkID(chunkID : any) {
-        var string = '';
-        for (var i = 0; i < 4; i++) {
-            var byte = (chunkID >> (i * 8)) & 0xFF;
-            string += String.fromCharCode(byte);
-        }
-        return string;
-    }
+   
 
     function handleDragEnter(e: any) {
         e.preventDefault();
@@ -97,77 +91,83 @@ export default function DropZone() {
     }
     return (
         <>
-            <div className="container">
-                <div className={`dropzone ${inDropZone ? 'dropzoneDROPHERE' : 'dropzoneDRAGFILE'}`}
-                    onDragEnter={(e) => handleDragEnter(e)}
-                    onDragOver={(e) => handleDragOver(e)}
-                    onDragLeave={(e) => handleDragLeave(e)}
-                    onDrop={(e) => handleDrop(e)}
-                >{inDropZone ? (<h3 className="dropzoneText" >
-                    DROP HERE
-                </h3>) : (!fileList && (<h3 className="dropzoneText" >
-                    DRAG FILE
-                </h3>))}
-                    {fileLoading && (<h3 className="dropzoneText" >FILE DROPPED</h3>)}
-                </div>
-                {newSampleRate && (
-                    <div className='results'>
-                        <h1 className='tableTitle'>RESULTS</h1>
-                        <table className='resultsTable'>
-                            <thead>
-                                <tr className='header'>
-                                    <th>HEADER</th>
-                                    <th>VALUE</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>CHUNK ID</td>
-                                    <td>{newChunkIDString}</td>
-                                </tr>
-                                <tr>
-                                    <td>CHUNK SIZE</td>
-                                    <td>{newChunkSize}</td>
-                                </tr>
-                                <tr>
-                                    <td>FORMAT</td>
-                                    <td>{newFormatString}</td>
-                                </tr>
-                                <tr>
-                                    <td>SUB CHUNK ID</td>
-                                    <td>{newSubChunkIDString}</td>
-                                </tr>
-                                <tr>
-                                    <td>AUDIO FORMAT</td>
-                                    <td>{newAudioFormat}</td>
-                                </tr>
-                                <tr>
-                                    <td>NUM CHANNLES</td>
-                                    <td>{newChannels}</td>
-                                </tr>
-                                <tr>
-                                    <td>SAMPLE RATE</td>
-                                    <td>{newSampleRate}</td>
-                                </tr>
-                                <tr>
-                                    <td>BYTE RATE</td>
-                                    <td>{newByteRate}</td>
-                                </tr>
-
-                                <tr>
-                                    <td>BLOCK ALIGN</td>
-                                    <td>{newBlockAlign}</td>
-                                </tr>
-                                <tr>
-                                    <td>BITS PER SAMPLE</td>
-                                    <td>{newBitsPerSample}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <div className="container">
+                    <div className='fileContainer'>
+                        <h1 className='header'>WAV FILE EXTRACTOR</h1>
+                        <div className={`dropzone ${inDropZone ? 'dropzoneDROPHERE' : 'dropzoneDRAGFILE'}`}
+                            onDragEnter={(e) => handleDragEnter(e)}
+                            onDragOver={(e) => handleDragOver(e)}
+                            onDragLeave={(e) => handleDragLeave(e)}
+                            onDrop={(e) => handleDrop(e)}
+                        >{inDropZone ? (<h3 className="dropzoneText" >
+                            DROP HERE
+                        </h3>) : (!fileList && (<h3 className="dropzoneText" >
+                            DRAG FILE
+                        </h3>))}
+                            {fileLoading && (<h3 className="dropzoneText" >FILE DROPPED</h3>)}
+                        </div>
                     </div>
-                )}
-            </div>
 
+                    {newSampleRate && (
+                        <div className='resultsContainer'>
+                            <div className='results'>
+                                <h1 className='tableTitle'>RESULTS</h1>
+                                <table className='resultsTable'>
+                                    <thead>
+                                        <tr className='header'>
+                                            <th>HEADER</th>
+                                            <th>VALUE</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>CHUNK ID</td>
+                                            <td>{newChunkIDString}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>CHUNK SIZE</td>
+                                            <td>{newChunkSize}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>FORMAT</td>
+                                            <td>{newFormatString}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>SUB CHUNK ID</td>
+                                            <td>{newSubChunkIDString}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>AUDIO FORMAT</td>
+                                            <td>{newAudioFormat}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>NUM CHANNLES</td>
+                                            <td>{newChannels}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>SAMPLE RATE</td>
+                                            <td>{newSampleRate}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>BYTE RATE</td>
+                                            <td>{newByteRate}</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>BLOCK ALIGN</td>
+                                            <td>{newBlockAlign}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>BITS PER SAMPLE</td>
+                                            <td>{newBitsPerSample}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    )}
+
+                </div>
         </>
 
     );

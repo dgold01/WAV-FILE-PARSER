@@ -1,38 +1,72 @@
 .dropzoneDRAGFILE{
-  width: 95%;
-  height: 95%;
+  width: 97%;
+  height: 90%;
   background-color: #111420;
   display: flex;
   align-self: center;
-  align-items: center;
+  justify-content: center;
+  padding-top: -10px;
 }
 .dropzoneDROPHERE{
   width: 95%;
   height: 95%;
-  background-color: #363946;
+  background-color:363946;
   display: flex;
   align-self: center;
-  align-items: center;
+  justify-content: center;
 }
+
 .dropzoneDROPPED{
   width: 95%;
   height: 95%;
   background-color: #111420;
   display: flex;
   align-self: center;
-  align-items: center;
+  justify-content: center;
 }
-.container {
+.fileContainer {
+  border-width: 2px;
   border-style: solid;
-  border-color: blue;
+  border-color: #222633;
   z-index: 1000;
-  border: white;
-  width: 500px;
   height: 500px;
-  background-color:#363946 ;
+  background-color: #363946;
   display: flex;
   flex-direction: column;
 }
+.container{
+  width: 500px;
+  align-self: center;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+}
+.resultsContainer{
+  margin-top: 5px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #222633;
+  z-index: 1000;
+  height: 500px;
+  background-color: #363946;
+  display: flex;
+  flex-direction: column;
+}
+
+th, td {
+  padding: 8px;
+}
+
+th {
+  background-color: #f2f2f2; /* Set background color for <th> elements */
+}
+
+td {
+  background-color: #ffffff; /* Set background color for all <td> elements */
+}
+
+
+
 
 .fileTableItem{
   color: #FFFFFF;
@@ -40,8 +74,10 @@
 }
 
 .header {
+  padding: -10px;
+  z-index: 1000;
   margin-left: 10px;;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: normal;
   color: #FFFFFF;
   font: TT Norms Pro, sans-serif;
