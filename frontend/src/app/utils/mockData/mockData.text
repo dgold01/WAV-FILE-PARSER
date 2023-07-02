@@ -1,0 +1,13 @@
+#these are the known values for interpretaton of bytes of the mockData.wav file, and used in testing
+
+52 49 46 46     - Chunk ID = "RIFF"
+24 08 00 00     - Chunk Size = 2084
+57 41 56 45     - Format = "WAVE"
+66 6D 74 20     - Sub Chunk ID = "fmt "
+01 00           - Audio Format =  1 (PCM)
+02 00           - Number of Channels = 2
+22 56 00 00     - Sample Rate = 22050
+88 58 01 00     - Byte Rate = 88200
+04 00           - Block Align = 4
+10 00           - Bits Per Sample = 16 bits
+
