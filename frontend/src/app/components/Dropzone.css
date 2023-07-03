@@ -17,14 +17,7 @@
   justify-content: center;
 }
 
-.dropzoneDROPPED{
-  width: 95%;
-  height: 95%;
-  background-color: #111420;
-  display: flex;
-  align-self: center;
-  justify-content: center;
-}
+
 .fileContainer {
   border-width: 2px;
   border-style: solid;

@@ -2,7 +2,7 @@
 
 import '../components/Dropzone.css'
 import { useEffect, useState } from "react";
-import { extractWavInfo } from '../utils/fileAnalysis/fileAnalysis'
+import extractWavInfo  from '../utils/fileAnalysis/fileAnalysis.js'
 
 
 
@@ -58,7 +58,7 @@ export default function DropZone() {
                         setFileLoading(false)
                     }
                     catch (error) {
-                        if (error.message === 'Not WAV file format') {
+                        if (error.message === 'Not WAV file format' || 'Error reading the file') {
                             setFileLoading(false)
                             setShowError(true)
                             await new Promise(res => setTimeout(res, 2500))

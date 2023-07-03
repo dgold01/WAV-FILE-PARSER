@@ -3,8 +3,7 @@
 
 // This function takes a file reader object as the first argument and an optional second argument file object, the second argument is not used in testing.
 // The function returns a promise that will resolve with the WAV header info. If no WAV file is deteced, a error is thrown.
-
-export function extractWavInfo(reader, file) {
+module.exports = function extractWavInfo(reader, file) {
     return new Promise((resolve, reject) => {
         // Event handler when the FileReader finishes loading the file
         reader.onload = function () {

@@ -1,5 +1,5 @@
-import { extractWavInfo } from './fileAnalysis';
-import { mockByteArrayWAV, mp4ByteArray } from '../mockData/mockBinaryData'
+const  extractWavInfo  = require('./fileAnalysis.js');
+const { mockByteArrayWAV, mp4ByteArray } = require('../mockData/mockBinaryData');
 
 describe('fileAnalysis function correctly parses WAV header', () => {
     test('it should return the correct information', async () => {
@@ -70,4 +70,6 @@ describe('fileAnalysis function correctly parses WAV header', () => {
             expect(error.message).toEqual('Not WAV file format'); //checks to see if correct error
         }
     })
+
+    
 });
